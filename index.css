@@ -1,0 +1,67 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+header,
+main,
+footer
+{
+    text-align: center;
+}
+
+h1
+{
+    font: 40px Indie Flower, cursive;
+}
+
+main
+{
+    display: flex;
+    justify-content: center;
+}
+
+.modal
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 1;
+
+    transition: all 500ms ease;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+a
+{
+    transition: all 500ms ease;
+}
+
+main a:focus ~ .modal
+{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+main a:focus
+{
+    font-size: 500px;
+}
+
+footer
+{
+    font: 25px Indie Flower, cursive;
+}
+
+footer a
+{
+    color: #000;
+    text-decoration: none;
+}
