@@ -51,7 +51,9 @@ article
     -webkit-user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
-    cursor:pointer;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 500ms ease;
 }
 
 .modal

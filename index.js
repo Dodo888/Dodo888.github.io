@@ -4,15 +4,18 @@
 
 var count = 0;
 var images = ["ferrari", "fi", "lotus", "manor", "mclaren", "mercedes", "redbull", "sauber", "tororosso", "williams"];
-var current = {};
+var current = "";
+var isFullSize = false;
 $(document).ready(function(){
     update();
 });
 
 function closephoto () {
+    isFullSize = false;
     $(".modal").css("opacity", "0");
     update();
-    current.removeAttr("style");
+    $(current).removeAttr("style");
+    $(".arrow").css("color", "#000");
     $(".closing").hide();
 }
 
@@ -28,25 +31,35 @@ function prev () {
     count--;
     count = (count < 0) ? count+images.length : count;
     update();
+    if (isFullSize)
+    {
+        fullsize(current);
+    }
 }
 
 function next () {
     count++;
     count = count % images.length;
     update();
+    if (isFullSize)
+    {
+        fullsize(current);
+    }
 }
 
 function fullsize (className) {
+    isFullSize = true;
     $(".modal").css("opacity", "1");
     $(".loading").show();
     $(".closing").show();
-    current = $(className);
+    current = className;
     var image = $(className).children().first();
     image.hide();
     var src = image.attr("src");
     image.attr("src", (src.replace("small", "big")));
     $(className).css({"width": "100%", "height": "100%", "position": "fixed", "top": "0", "left": "0",
-    "display": "flex", "align-items": "center", "justify-content": "center", "overflow": "hidden", "z-index": "2"});
+        "display": "flex", "align-items": "center", "justify-content": "center", "overflow": "hidden", "z-index": "2"});
+    $(".arrow").css("color", "#fff");
     image.load(function () {
         $(".loading").hide();
         image.show();
