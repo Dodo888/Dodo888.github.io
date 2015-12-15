@@ -16,6 +16,7 @@ function closephoto () {
     update();
     $(current).removeAttr("style");
     $(".arrow").css("color", "#000");
+    $(".loading").hide();
     $(".closing").hide();
 }
 
