@@ -15,7 +15,9 @@ function closephoto () {
     $(".modal").css("opacity", "0");
     update();
     $(current).removeAttr("style");
-    $(current).click(fullsize(current));
+    $(current).click(function () {
+        fullsize(current);
+    });
     $(".arrow").css("color", "#000");
     $(".loading").hide();
     $(".closing").hide();
