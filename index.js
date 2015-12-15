@@ -15,6 +15,7 @@ function closephoto () {
     $(".modal").css("opacity", "0");
     update();
     $(current).removeAttr("style");
+    $(current).click(fullsize(current));
     $(".arrow").css("color", "#000");
     $(".loading").hide();
     $(".closing").hide();
@@ -60,6 +61,7 @@ function fullsize (className) {
     image.attr("src", (src.replace("small", "big")));
     $(className).css({"width": "100%", "height": "100%", "position": "fixed", "top": "0", "left": "0",
         "display": "flex", "align-items": "center", "justify-content": "center", "overflow": "hidden", "z-index": "2"});
+    $(className).removeAttr("onclick");
     $(".arrow").css("color", "#fff");
     image.load(function () {
         $(".loading").hide();
